@@ -2,6 +2,8 @@
 
 > *"They came down through the carrier wave."*
 
+Made by [Mike Higgins](https://mikehiggins.me.uk/)
+
 **Signal Lost** is a zero-runtime-dependency, procedural arcade space shooter written in strict TypeScript. Everything — pixel-art sprites, glowing bitmap fonts, procedural FBM nebulae, destructible shield pylons, multi-pass WebGL CRT/bloom shaders, and an adaptive 16-step Web Audio synthesizer/sequencer — is generated programmatically at runtime with **zero external image, font, or audio assets**.
 
 ---
@@ -419,4 +421,9 @@ __game.run.pierce = 2;
 // Step simulation manually by one 120Hz tick
 __game.update(1 / 120);
 ```
+
+---
+
+Made by [Mike Higgins](https://mikehiggins.me.uk/)
+
 
