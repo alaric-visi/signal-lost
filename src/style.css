@@ -1,0 +1,56 @@
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;width:100%;overflow:hidden;background:#04010a;transition:background .3s}
+body.light-mode{background:#e1e6ed}
+body{
+  touch-action:none;overscroll-behavior:none;-webkit-user-select:none;user-select:none;
+  -webkit-tap-highlight-color:transparent;
+  font-family:ui-monospace,"SF Mono",Menlo,Consolas,"Courier New",monospace;
+}
+#game{position:fixed;inset:0;width:100%;height:100%;display:block;image-rendering:pixelated;outline:none}
+
+/* CRT layers — GPU-composited, so they cost nothing per frame */
+#scan{
+  position:fixed;inset:0;z-index:5;pointer-events:none;opacity:.5;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.42) 0 1px,transparent 1px 3px);
+}
+body.light-mode #scan{
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.3) 0 1px,transparent 1px 3px);
+}
+#vig{
+  position:fixed;inset:0;z-index:6;pointer-events:none;
+  background:radial-gradient(ellipse 75% 75% at 50% 50%,transparent 40%,rgba(2,0,8,.82) 100%);
+}
+body.light-mode #vig{
+  background:radial-gradient(ellipse 75% 75% at 50% 50%,transparent 40%,rgba(255,255,255,.5) 100%);
+}
+.fx-off{display:none!important}
+/* the WebGL pass draws its own scanlines and vignette */
+body.gl #scan,body.gl #vig{display:none}
+
+/* Page controls: tucked into the top-right corner, which the HUD keeps clear.
+   On a tall phone the playfield is letterboxed, so they sit in the band above it. */
+#chrome{
+  position:fixed;z-index:8;display:flex;gap:6px;
+  top:max(8px,env(safe-area-inset-top));right:max(8px,env(safe-area-inset-right));
+  opacity:.7;transition:opacity .15s;
+}
+#chrome:hover,#chrome:focus-within{opacity:1}
+
+.btn{
+  width:32px;height:32px;border-radius:8px;cursor:pointer;
+  background:rgba(10,4,26,.55);border:1px solid rgba(120,240,255,.28);
+  color:#7fe9ff;font:600 13px/1 ui-monospace,monospace;
+  display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(6px);transition:border-color .15s,color .15s,transform .08s;
+}
+#bPause{font-size:9px;letter-spacing:-1px}
+body.light-mode .btn{
+  background:rgba(255,255,255,.55);border:1px solid rgba(0,85,255,.28);color:#0055ff;
+}
+.btn:hover{border-color:rgba(120,240,255,.7);color:#d8fbff}
+body.light-mode .btn:hover{border-color:rgba(0,85,255,.7);color:#0033cc}
+.btn:active{transform:scale(.93)}
+.btn.dim{color:#4a5f6b;border-color:rgba(120,240,255,.12)}
+body.light-mode .btn.dim{color:#8899a6;border-color:rgba(0,85,255,.12)}
+/* a little larger where they are pressed with a thumb */
+@media (pointer:coarse){.btn{width:38px;height:38px}}
