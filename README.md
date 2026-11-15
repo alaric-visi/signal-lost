@@ -8,11 +8,7 @@
 
 ## Gameplay Demo
 
-<video src="gameplay-video/signal-lost-gameplay.mp4" controls width="100%">
-  <a href="gameplay-video/signal-lost-gameplay.mp4">Watch the Signal Lost gameplay video (MP4)</a>
-</video>
-
-> **Video file:** [`gameplay-video/signal-lost-gameplay.mp4`](gameplay-video/signal-lost-gameplay.mp4)
+![Signal Lost Gameplay](gameplay-video/signal-lost-gameplay.gif)
 
 ---
 
@@ -423,3 +419,4 @@ __game.run.pierce = 2;
 // Step simulation manually by one 120Hz tick
 __game.update(1 / 120);
 ```
+
